@@ -56,7 +56,7 @@ The project demonstrates a complete **end-to-end machine learning pipeline** dev
 | **Traditional** | Logistic Regression | Correlation screening + VIF ≤ 5 to address multicollinearity. |
 | **Traditional** | Decision Tree | Cost-complexity pruning + max depth & leaf size constraints. |
 | **Advanced** | Random Forest | Iterative feature elimination based on importance scores. |
-| **Advanced** | **XGBoost** | `GridSearchCV` (5-fold) tuning `max_depth`, `learning_rate`, `n_estimators`, `subsample`, `colsample_bytree`. |
+| **Advanced** | **XGBoost** | `GridSearchCV` (5-fold cross-validation) tuning `max_depth`, `learning_rate`, `n_estimators`, `subsample`, `colsample_bytree` to ensure model stability and hyperparameter optimization.|
 
 ### 5. Model Testing
 - **Metric:** ROC-AUC on a held-out 30% test set.
@@ -72,6 +72,7 @@ The project demonstrates a complete **end-to-end machine learning pipeline** dev
 > **Key Insight:** XGBoost with highest AUC score due to its boosted ensemble approach, offers superior performance, demonstrating the tangible value of machine learning in credit risk assessment.
 
 ### 6. Model Explainability (SHAP)
+- Explainability: Used SHAP to decompose model predictions, addressing the "Black Box" concern in AI and aligning with regulatory requirements for model transparency and interpretability.
 - The tuned **XGBoost model** was selected for SHAP analysis due to its top-tier AUC.
 - One-hot encoded SHAP values were **aggregated** to provide business-intuitive feature importance.
 - **Top predictive features:** `loan_int_rate`, `loan_percent_income`, `person_income`, `person_home_ownership`, `loan_intent`.
